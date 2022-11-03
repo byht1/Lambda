@@ -1,0 +1,3 @@
+{"name":"Мшефдшл","gender":"чоловіча","age":"23"}
+{"name":"Vitalik","gender":"чоловіча","age":"23"}
+{"name":"Vlad","gender":"чоловіча","age":"43"}
