@@ -8,6 +8,7 @@ program
 
 program
   .command("message")
+  .alias("m")
   .description("Бот відправить повідомлення")
   .argument("<string>", "повідомлення для надсилання")
   .action((str) => {
@@ -16,6 +17,7 @@ program
 
 program
   .command("photo")
+  .alias("p")
   .description("Бот відправить повідомлення photo")
   .argument("<path>", "Шлях до фото або просто перетяніть фото")
   .action((path) => {
