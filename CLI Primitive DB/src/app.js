@@ -8,45 +8,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const dbDatePath = path.join(__dirname, "./db/users.txt");
 
-// const userName = {
-//   type: "input",
-//   name: "Name",
-//   message:
-//     "Увведіть ім'я для вихібу натисніть ENTER (при цьому поле повинне бути пустим) ",
-// };
-
-// const nextQuestions = [
-//   {
-//     type: "list",
-//     name: "Gender",
-//     message: "Вкажіть свою стать",
-//     choices: ["чоловіча", "жіночі", "інше"],
-//     default: "чоловіча",
-//   },
-
-//   {
-//     type: "input",
-//     name: "Age",
-//     message: "Вкажіть свій вік",
-//   },
-// ];
-
-// const actions = [
-//   {
-//     type: "input",
-//     name: "actions",
-//     message: "Знайти користувача в базі данних? (Y/N)",
-//   },
-// ];
-
-// const searchName = [
-//   {
-//     type: "input",
-//     name: "searchName",
-//     message: "Увведіть ім'я для пошуку",
-//   },
-// ];
-
 cli();
 
 function cli() {
