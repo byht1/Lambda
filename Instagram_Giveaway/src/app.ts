@@ -1,13 +1,7 @@
-const fs = require("fs/promises");
-const path = require("path");
+import * as fs from "fs/promises";
+import { existInAllFiles, uniqueValues, existInAtLeastTen } from "helpers";
+import path from "path";
 
-const {
-  existInAllFiles,
-  existInAtLeastTen,
-  uniqueValues,
-} = require("./helpers");
-
-// const URL_DB = "./dbTest";
 const URL_DB = "./db";
 
 const time = async () => {
@@ -17,7 +11,7 @@ const time = async () => {
 
   const data = await sort();
 
-  return (fn) => {
+  return (fn: (data: string[][]) => void) => {
     fn(data);
     const finish = (Date.now() - start) / 1000;
     console.log("🚀 ~ Time", `${finish}s`);
@@ -46,7 +40,7 @@ async function sort() {
 
 const timeCall = time();
 
-const closingDate = async (typeSort) => {
+const closingDate = async (typeSort: string) => {
   const uniqueDbDate = await timeCall;
 
   switch (typeSort) {
@@ -66,8 +60,8 @@ const closingDate = async (typeSort) => {
   }
 };
 
-closingDate("uniqueValues"); // значення 129240 Time: 1.697s - 1.967s Якщо визвати окремо
+closingDate("uniqueValues"); // значення 129240 Time: 1.404s - 1.967s Якщо визвати окремо
 closingDate("existInAllFiles"); // значення 441 Time: 803.082ms - 895.735ms Якщо визвати окремо
-closingDate("existInAtLeastTen"); // значення 73245 Time: 2.315s - 2.437s Якщо визвати окремо
+closingDate("existInAtLeastTen"); // значення 73245 Time: 1.685s - 2.437s Якщо визвати окремо
 
-// Загальний час виконня всіх 3 функцій Time: 3.202s - 3.885s
+// Загальний час виконня всіх 3 функцій Time: 2.79s - 3.885s

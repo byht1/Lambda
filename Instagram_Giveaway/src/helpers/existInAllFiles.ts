@@ -1,4 +1,4 @@
-const uniqueFile = (arrA, arrB) => {
+const uniqueFile = (arrA: string[], arrB: string[]) => {
   const arrASet = new Set(arrA);
   const unique = [];
 
@@ -11,7 +11,7 @@ const uniqueFile = (arrA, arrB) => {
   return unique;
 };
 
-const existInAllFiles = (data) => {
+export const existInAllFiles = (data: string[][]) => {
   let res = uniqueFile(data[0], data[1]);
 
   for (let i = 2; i < data.length; i += 1) {
@@ -24,5 +24,3 @@ const existInAllFiles = (data) => {
     set.size
   );
 };
-
-module.exports = existInAllFiles;
