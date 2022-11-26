@@ -57,8 +57,6 @@ const data = async (url: string[]) => {
     method.push(data);
   }
 
-  Promise.all(method.map((x) => x())).then(console.log);
-
   const total = await Promise.all(method.map((x) => x())).then((res) =>
     res.reduce(
       (acc, x) => {
@@ -77,6 +75,8 @@ const data = async (url: string[]) => {
     )
   );
   console.log("🚀 ~ total", total);
+  console.timeEnd("Time");
 };
 
+console.time("Time");
 data(url);
