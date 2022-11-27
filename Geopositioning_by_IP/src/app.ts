@@ -1,11 +1,16 @@
-import Papa from "papaparse";
-import * as fs from "fs/promises";
-import path from "path";
+import express from "express";
+import dotenv from "dotenv";
+import { routerIP } from "./routes";
 
-const url = path.join(__dirname, "./db/IP2LOCATION-LITE-DB1.CSV");
+dotenv.config();
 
-const data = fs
-  .readFile(url, { encoding: "utf8" })
-  .then((data) => Papa.parse(data, { header: true }))
-  .then(console.log);
-console.log("🚀 ~ data", data);
+const app = express();
+const port = process.env.PORT ?? 5000;
+
+app.use(express.json());
+
+app.use("/", routerIP);
+
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
+});
