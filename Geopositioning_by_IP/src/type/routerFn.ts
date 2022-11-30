@@ -1,7 +1,8 @@
 import Express from "express";
+import { RequestCustom } from "./ctrlWrapper";
 
 export type TRouterFn = (
-  req: Express.Request,
+  req: RequestCustom,
   res: Express.Response,
   next?: Express.NextFunction
 ) => any | void;

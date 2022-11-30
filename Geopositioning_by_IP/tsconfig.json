@@ -8,7 +8,7 @@
     "strict": true,
     "noEmitOnError": true, // Не компілювати в js коли помилка
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedParameters": true, // Помилка якщо змінна не використовуьбся
     "noImplicitReturns": true,
     "baseUrl": "./src",
     "esModuleInterop": true,

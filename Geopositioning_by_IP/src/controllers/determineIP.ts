@@ -1,13 +1,24 @@
-import { TRouterFn } from "type";
+import { dataIP } from "data";
+import { TDataDto, TRouterFn } from "type";
 
 export const determineIP: TRouterFn = async (req, res) => {
-  const ip =
-    req.header("x-forwarded-for") || req.connection.remoteAddress || req.ip;
+  const start = Date.now();
+  const { decimal, ip } = req.userIP!;
+  const { data } = await dataIP;
 
-  if (Array.isArray(ip)) return;
+  let location: TDataDto | null = null;
 
-  const arrIp = ip?.split(".");
-  console.log("🚀 ~ arrIp", arrIp);
+  for (let i = 0; i < data.length; i += 1) {
+    const { proxy1, proxy2 } = data[i];
+    if (Number(proxy1) <= decimal! && Number(proxy2) >= decimal!) {
+      location = data[i];
+      break;
+    }
+  }
 
-  res.send("Express + TypeScript Server");
+  res.status(200).json({
+    country: location?.country,
+    IP: ip,
+    time: `${(Date.now() - start) / 1000} ms`,
+  });
 };
