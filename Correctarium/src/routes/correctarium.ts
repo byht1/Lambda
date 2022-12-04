@@ -1,4 +1,4 @@
-import { correctarium } from "controllers";
+import { correctarium } from "../controllers/correctarium";
 import express from "express";
 
 import { ctrlWrapper } from "../helpers/ctrlWrapper";

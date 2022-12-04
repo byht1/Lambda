@@ -26,3 +26,5 @@ app.use((err: INewError, req: Request, res: Response, next: NextFunction) => {
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });
+
+export default app;

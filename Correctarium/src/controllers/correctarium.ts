@@ -5,8 +5,8 @@ import {
   FILE,
   PRISE,
   timeToWorkByPrise,
-} from "helpers";
-import { createError } from "helpers/createError";
+} from "../helpers";
+import { createError } from "../helpers/createError";
 import { TBody, TRouterFn } from "type";
 
 export const correctarium: TRouterFn = (req, res) => {

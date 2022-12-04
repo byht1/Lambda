@@ -1,5 +1,5 @@
 import { TPrise } from "type";
-import { ANOTHER } from "helpers";
+import { ANOTHER } from "../../helpers";
 
 type TService = (language: TPrise, fileType: string, count: number) => number;
 
