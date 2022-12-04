@@ -1,18 +1,11 @@
 import request from "supertest";
-import dotenv from "dotenv";
 import app from "../app";
-
-dotenv.config();
-
-// const { PORT = 5000 } = process.env;
 
 const newOrder = {
   language: "Ангрійський",
   mimetype: "doc",
   count: "20000",
 };
-
-// .toEqual({timeInHours: 1, price: '50.00'});
 
 describe("Test correctarium new order", () => {
   test("/api new order", async () => {
@@ -66,6 +59,34 @@ describe("Test correctarium new order", () => {
         prise: 1000,
         time: "15 годин 30 хвилин",
         deadline: 55813504,
+        deadline_date: expect.any(String),
+      })
+    );
+  });
+
+  test("/api English min prise", async () => {
+    const newText = { ...newOrder, count: 10 };
+    const { statusCode, body } = await request(app).post("/api").send(newText);
+    expect(statusCode).toBe(200);
+    expect(body).toEqual(
+      expect.objectContaining({
+        prise: 50,
+        time: "0 годин 31 хвилин",
+        deadline: 1908109,
+        deadline_date: expect.any(String),
+      })
+    );
+  });
+
+  test("/api Ukrainian min prise", async () => {
+    const newText = { ...newOrder, count: 10, language: "Україський" };
+    const { statusCode, body } = await request(app).post("/api").send(newText);
+    expect(statusCode).toBe(200);
+    expect(body).toEqual(
+      expect.objectContaining({
+        prise: 120,
+        time: "0 годин 30 хвилин",
+        deadline: 1827007,
         deadline_date: expect.any(String),
       })
     );
