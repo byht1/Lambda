@@ -1,12 +1,10 @@
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 
 import { createError } from "helpers/createError";
 import { userDto } from "dto/userDto";
 import { TRouterFn } from "type";
 import { userConnect } from "model/user";
-
-const { SECRET_KEY = "Test" } = process.env;
+import { newToken } from "./token";
 
 export const login: TRouterFn = async (req, res) => {
   const { email, password } = req.query;
@@ -27,10 +25,8 @@ export const login: TRouterFn = async (req, res) => {
   const payload = {
     id: user._id,
   };
-  const time = Math.random() * (60 - 30) + 30;
 
-  const token = jwt.sign(payload, SECRET_KEY, { expiresIn: `${time}h` });
-  //   const token = jwt.sign(payload, SECRET_KEY, { expiresIn: `${time}s` });
+  const token = newToken(payload);
 
   await Users.findOneAndUpdate({ _id: user._id }, { $set: { token } });
 

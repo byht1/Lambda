@@ -26,6 +26,14 @@ export const auth: TRouterFn = async (req, _, next) => {
     if (!user || !user.token) {
       throw createError(401, "Not authorized");
     }
+
+    //Можна також робити таку перевірку
+    //В цілях безпеки такий спросіб навіть краще
+
+    // if (token !== user.token) {
+    //   throw createError(401, "Not authorized");
+    // }
+
     req.user = user;
 
     next();
