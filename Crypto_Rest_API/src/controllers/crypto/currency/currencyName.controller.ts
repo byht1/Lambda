@@ -7,7 +7,7 @@ export const currencyName: TRouterFn = async (req, res) => {
   const { name } = req.params;
   const { apiName } = req.query;
 
-  const query = `SELECT * FROM crypto15 WHERE symbol = ? ${
+  const query = `SELECT * FROM crypto16 WHERE symbol = ? ${
     apiName ? `AND api = "${apiName}"` : ""
   }`;
 

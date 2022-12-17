@@ -15,7 +15,7 @@ export const currencyCryptoData = async () => {
   ]).then((res) => [...res[0], ...res[1], ...res[2], ...res[3], ...res[4]]);
 
   const query =
-    "INSERT INTO crypto15 (name, prise, symbol, 1h, 4h, 24h, api, date ) value(?, ?, ?, ?, ?, ?, ?, ?)";
+    "INSERT INTO crypto16 (name, prise, symbol, 1h, 4h, 24h, api, date ) value(?, ?, ?, ?, ?, ?, ?, ?)";
 
   await pool.query("TRUNCATE TABLE  crypto15");
 

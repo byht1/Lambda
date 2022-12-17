@@ -6,7 +6,7 @@ export const resetData: TResetData = async (date, fn, req, res) => {
 
   const differenceTime = Math.ceil((Date.now() - date) / oneMinute);
 
-  if (differenceTime > 1) {
+  if (differenceTime > 15) {
     await currencyCryptoData();
     fn(req, res);
     return true;

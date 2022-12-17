@@ -1,4 +1,4 @@
-import Papa from "papaparse";
+pm import Papa from "papaparse";
 import * as fs from "fs/promises";
 import path from "path";
 
