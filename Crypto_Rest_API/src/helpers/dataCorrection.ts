@@ -1,6 +1,7 @@
+import { TApiName } from "type";
 import { nameCrypto } from "./nameCrypto";
 
-export const dataCorrection = async (dataServer: any) => {
+export const dataCorrection = async (dataServer: any, api: TApiName) => {
   const nameDate = await nameCrypto;
   const date = Date.now();
   const data = [];
@@ -17,8 +18,12 @@ export const dataCorrection = async (dataServer: any) => {
 
     const element = {
       name,
+      prise: api === "kucoin" ? Number(values[i]) : 1 / Number(values[i]),
       symbol: k,
-      prise: 1 / Number(values[i]),
+      "1h": null,
+      "4h": null,
+      "24h": null,
+      api,
       date,
     };
 

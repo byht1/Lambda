@@ -9,3 +9,6 @@ export * from "./apiType/coinbase";
 export * from "./apiType/coinStats";
 export * from "./apiType/kucoin";
 export * from "./apiType/coinPaprika";
+
+// crypto ROUTE
+export * from "./crypto/resetData";

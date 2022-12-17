@@ -10,7 +10,7 @@ export const kucoin = async () => {
       data: { data },
     } = await axios.get<IKucoin>(URL);
 
-    const prise: TData[] = await dataCorrection(data);
+    const prise: TData[] = await dataCorrection(data, "kucoin");
 
     return prise;
   } catch (error) {

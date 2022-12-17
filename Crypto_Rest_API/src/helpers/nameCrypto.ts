@@ -9,7 +9,7 @@ const failDBName = fs.readFile(urlPath, { encoding: "utf8" });
 const name = async () => {
   const names = await failDBName;
 
-  return new Map(JSON.parse(names));
+  return new Map<string, string>(JSON.parse(names));
 };
 
 export const nameCrypto = name();
