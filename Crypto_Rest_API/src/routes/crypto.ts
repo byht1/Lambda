@@ -1,6 +1,6 @@
 import express from "express";
 
-import { ctrlWrapper } from "helpers/ctrlWrapper";
+import { ctrlWrapper } from "helpers";
 
 import { crypto, currencyName } from "controllers";
 

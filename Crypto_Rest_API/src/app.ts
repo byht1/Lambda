@@ -11,17 +11,13 @@ import { currencyCryptoData } from "api";
 dotenv.config();
 
 const {
-  PORT = 5001,
+  PORT = 5000,
   DB_USER,
   DB_PASSWORD,
   DB_NAME,
   DB_HOST,
   // INSTANCE_CONNECTION_NAME,
 } = process.env;
-console.log("🚀  DB_HOST", DB_HOST);
-console.log("🚀  DB_NAME", DB_NAME);
-console.log("🚀  DB_PASSWORD", DB_PASSWORD);
-console.log("🚀  DB_USER", DB_USER);
 
 export const pool = mysql.createPool({
   host: DB_HOST,
