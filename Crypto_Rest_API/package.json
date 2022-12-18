@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./dist/app.js",
+    "start": "NODE_PATH=./dist node ./dist/app.js",
     "dev": "nodemon",
-    "build": "tsc -p tsconfig.json"
+    "build": "rm -rf ./dist && tsc -p tsconfig.json",
+    "prod": "npm run build && npm start"
   },
   "keywords": [],
   "author": "",
