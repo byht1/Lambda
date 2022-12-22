@@ -4,6 +4,12 @@ import { TData, TDataAverage, TNormalAverageValue, TResetData } from "type";
 export const resetData: TResetData = async (date, fn, req, res) => {
   const oneMinute = 60 * 1000;
 
+  if (!date) {
+    await currencyCryptoData();
+    fn(req, res);
+    return true;
+  }
+
   const differenceTime = Math.ceil((Date.now() - date) / oneMinute);
 
   if (differenceTime > 15) {
