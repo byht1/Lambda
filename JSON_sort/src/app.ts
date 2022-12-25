@@ -16,10 +16,10 @@ const objSearch = (obj: any) => {
   }
 };
 
-const server = (url: string) => {
+const server = async (url: string) => {
   let attempts = 3;
 
-  const call = async () => {
+  const call = async (): Promise<any> => {
     try {
       const { data }: AxiosResponse<TDataUrl> = await axios.get(url);
       let isDone = null;
@@ -42,18 +42,18 @@ const server = (url: string) => {
 
       attempts -= 1;
 
-      call();
+      return await call();
     }
   };
 
-  return call;
+  return await call;
 };
 
 const data = async (url: string[]) => {
   const method = [];
 
   for (const str of url) {
-    const data = server(str);
+    const data = await server(str);
     method.push(data);
   }
 
